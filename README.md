@@ -21,3 +21,11 @@ cot-4500-Pro1/
    ```bash
    git clone https://github.com/Devonav/cot-4500-Pro1
    cd cot-4500-Pro1
+2. **Install dependencies**:
+pip install -r requirements.txt
+
+3. **Run Tests**:
+python -m unittest discover src/test
+
+4.**Run the main script**:
+python src/main/assignment_1.py
