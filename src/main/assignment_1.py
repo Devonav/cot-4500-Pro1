@@ -1,46 +1,57 @@
 import math
 
-def approximation_algorithm(x, n):
-    """Approximates a value using the Taylor Series expansion."""
-    result = 0
+def approximation_algorithm(x: float, n: int) -> float:
+    """Approximates a function using a given series expansion."""
+    result = 0.0
     for i in range(n):
-        result += ((-1)**i * (x**(2*i+1))) / math.factorial(2*i+1)
+        result += (-1)**i * (x ** (2*i)) / math.factorial(2*i)  # Example: cosine approximation
     return result
 
-def bisection_method(func, a, b, tol=1e-6, max_iter=100):
-    """Finds the root of func using the Bisection Method."""
-    if func(a) * func(b) >= 0:
-        raise ValueError("Function values at a and b must have opposite signs.")
-
-    for _ in range(max_iter):
-        c = (a + b) / 2
-        if abs(func(c)) < tol or (b - a) / 2 < tol:
-            return c
-        elif func(c) * func(a) < 0:
-            b = c
+def bisection_method(f, a: float, b: float, tol: float = 1e-6) -> float:
+    """Finds root of function f in [a, b] using the Bisection Method."""
+    if f(a) * f(b) >= 0:
+        raise ValueError("Function values at the interval endpoints must have opposite signs.")
+    
+    while (b - a) / 2 > tol:
+        midpoint = (a + b) / 2
+        if f(midpoint) == 0:
+            return midpoint
+        elif f(a) * f(midpoint) < 0:
+            b = midpoint
         else:
-            a = c
-    return c
+            a = midpoint
+    return (a + b) / 2
 
-def fixed_point_iteration(g, x0, tol=1e-6, max_iter=100):
-    """Solves x = g(x) using Fixed-Point Iteration."""
+def fixed_point_iteration(g, x0: float, tol: float = 1e-6, max_iter: int = 100) -> float:
+    """Finds root using Fixed-Point Iteration method."""
     x = x0
     for _ in range(max_iter):
         x_new = g(x)
         if abs(x_new - x) < tol:
             return x_new
         x = x_new
-    return x
+    raise ValueError("Fixed-Point Iteration did not converge within max iterations.")
 
-def newton_raphson_method(func, deriv, x0, tol=1e-6, max_iter=100):
-    """Finds the root of func using Newton-Raphson Method."""
+def newton_raphson(f, df, x0: float, tol: float = 1e-6, max_iter: int = 100) -> float:
+    """Finds root using Newton-Raphson method."""
     x = x0
     for _ in range(max_iter):
-        f_x = func(x)
-        f_prime_x = deriv(x)
-        if abs(f_x) < tol:
+        fx = f(x)
+        dfx = df(x)
+        if abs(fx) < tol:
             return x
-        if f_prime_x == 0:
-            raise ValueError("Derivative is zero. No solution found.")
-        x -= f_x / f_prime_x
-    return x
+        if dfx == 0:
+            raise ValueError("Derivative is zero. Newton-Raphson method fails.")
+        x = x - fx / dfx
+    raise ValueError("Newton-Raphson method did not converge within max iterations.")
+
+if __name__ == "__main__":
+    # Example function for manual testing
+    f = lambda x: x**3 - x - 2
+    df = lambda x: 3*x**2 - 1
+    g = lambda x: math.sqrt(x + 2)  # Example for fixed-point iteration
+    
+    print("Approximation Algorithm:", approximation_algorithm(1.0, 10))
+    print("Bisection Method:", bisection_method(f, 1, 2))
+    print("Fixed-Point Iteration:", fixed_point_iteration(g, 1.5))
+    print("Newton-Raphson Method:", newton_raphson(f, df, 1.5))

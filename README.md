@@ -27,5 +27,17 @@ pip install -r requirements.txt
 3. **Run Tests**:
 python -m unittest discover src/test
 
-4.**Run the main script**:
-python src/main/assignment_1.py
+4.**Expected Output**:
+Approximation Algorithm Output: 1.0
+.Bisection Method Output: 1.5213804244995117
+.Fixed-Point Iteration Output: 1.999999875463298
+.Newton-Raphson Method Output: 1.5213798059647863
+.
+----------------------------------------------------------------------
+Ran 4 tests in 0.000s
+
+OK
+
+
+**Author**
+Devon Villalona
