@@ -19,5 +19,5 @@ cot-4500-Pro1/
 
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/your-username/cot-4500-Pro1.git
+   git clone https://github.com/Devonav/cot-4500-Pro1
    cd cot-4500-Pro1
