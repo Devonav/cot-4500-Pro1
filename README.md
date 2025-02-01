@@ -29,14 +29,14 @@ python -m unittest discover src/test
 
 4. Expected Output:
 
-Approximation Algorithm: 0.5403023058681397
-Bisection Method: 1.5213804244995117
-Fixed-Point Iteration: 1.999999875463298
-Newton-Raphson Method: 1.5213798059647863
-----------------------------------------------------------------------
-Ran 4 tests in 0.000s
+   Approximation Algorithm: 0.5403023058681397
+   Bisection Method: 1.5213804244995117
+   Fixed-Point Iteration: 1.999999875463298
+   Newton-Raphson Method: 1.5213798059647863
+   ----------------------------------------------------------------------
+   Ran 4 tests in 0.000s
 
-OK
+   OK
 
 
 **Author**
