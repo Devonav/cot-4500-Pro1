@@ -27,7 +27,7 @@ pip install -r requirements.txt
 3. **Run Tests**:
 python -m unittest discover src/test
 
-4. Expected Output
+4. Expected Output:
 
 Approximation Algorithm: 0.5403023058681397
 Bisection Method: 1.5213804244995117
